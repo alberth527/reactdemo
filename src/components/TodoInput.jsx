@@ -7,7 +7,7 @@ function TodoInput({onAdd, inputValue, setInputValue}) {
   return (
     <form>
       <input type="text" value={inputValue} onChange={handleInputChange} />
-      <button onClick={onAdd}>Add Todo</button>
+      <button className="button" onClick={onAdd}>Add Todo</button>
     </form>
   )
 }

@@ -1,4 +1,5 @@
 import  { useState } from 'react';
+import './App.css';
 
 import TodoItems from './components/TodoItems';
 import TodoInput from './components/TodoInput';
