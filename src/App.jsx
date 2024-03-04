@@ -1,16 +1,16 @@
 import  { useState } from 'react';
-//import  styles from './App.css';
+
+import TodoItems from './components/TodoItems';
+import TodoInput from './components/TodoInput';
 
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const handleAddTodo = () => {
+ 
+  const handleAddTodo = (e) => {
+    e.preventDefault();
     if (inputValue.trim() !== '') {
       setTodos([...todos, inputValue]);
       setInputValue('');
@@ -23,19 +23,12 @@ const TodoList = () => {
   };
 
   return (
-    <div>
+    <div> 
       <h1>Todo List</h1>
-      <input type="text" value={inputValue} onChange={handleInputChange} />
-      <button onClick={handleAddTodo}>Add Todo</button>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>
-            {todo}
-            <button onClick={() => handleDeleteTodo(index)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+  <TodoInput onAdd={handleAddTodo} inputValue={inputValue} setInputValue={setInputValue}/>
+<TodoItems todos={todos} ondelete={handleDeleteTodo} />
     </div>
+ 
   );
 };
 
